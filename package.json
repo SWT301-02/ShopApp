@@ -1,0 +1,36 @@
+{
+    "name": "prj301_3w_1_jslt_fn",
+    "version": "1.0.0",
+    "main": "index.js",
+    "directories": {
+        "lib": "lib",
+        "test": "test"
+    },
+    "scripts": {
+        "test": "codeceptjs run --steps",
+        "codeceptjs": "codeceptjs run --steps",
+        "codeceptjs:headless": "HEADLESS=true codeceptjs run --steps",
+        "codeceptjs:ui": "codecept-ui --app",
+        "codeceptjs:demo": "codeceptjs run --steps -c node_modules/@codeceptjs/examples",
+        "codeceptjs:demo:headless": "HEADLESS=true codeceptjs run --steps -c node_modules/@codeceptjs/examples",
+        "codeceptjs:demo:ui": "codecept-ui --app  -c node_modules/@codeceptjs/examples"
+    },
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+        "@codeceptjs/configure": "^1.0.1",
+        "@codeceptjs/examples": "^1.2.4",
+        "@codeceptjs/ui": "^1.2.0",
+        "@types/node": "^22.5.5",
+        "codeceptjs": "^3.6.5",
+        "playwright": "^1.47.1",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.6.2"
+    },
+    "dependencies": {
+        "dotenv": "^16.0.3",
+        "groq-sdk": "^0.7.0",
+        "openai": "^4.61.0"
+    }
+}

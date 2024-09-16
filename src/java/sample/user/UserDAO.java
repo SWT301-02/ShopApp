@@ -357,7 +357,7 @@ public class UserDAO {
         PreparedStatement ptm = null;
         ResultSet rs = null;
         try {
-            conn = DBUtils.getConnectionv2();
+            conn = DBUtils.getConnection();
             if (conn != null) {
                 ptm = conn.prepareStatement(SEARCHTOP);
                 rs = ptm.executeQuery();

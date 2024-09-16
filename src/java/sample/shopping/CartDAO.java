@@ -140,4 +140,58 @@ public class CartDAO {
         return result;
     }
 
+    public double getTotalSales() throws SQLException {
+        double totalSales = 0;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement("SELECT SUM(total) AS totalSales FROM tblOrder");
+                rs = ptm.executeQuery();
+                if (rs.next()) {
+                    totalSales = rs.getDouble("totalSales");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null)
+                rs.close();
+            if (ptm != null)
+                ptm.close();
+            if (conn != null)
+                conn.close();
+        }
+        return totalSales;
+    }
+
+    public int getTotalOrders() throws SQLException {
+        int totalOrders = 0;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement("SELECT COUNT(*) AS totalOrders FROM tblOrder");
+                rs = ptm.executeQuery();
+                if (rs.next()) {
+                    totalOrders = rs.getInt("totalOrders");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null)
+                rs.close();
+            if (ptm != null)
+                ptm.close();
+            if (conn != null)
+                conn.close();
+        }
+        return totalOrders;
+    }
+
 }

@@ -328,4 +328,43 @@ public class ProductDAO {
         }
         return product;
     }
+
+    public List<ProductSalesDTO> getTopSellingProducts(int limit) throws SQLException {
+        List<ProductSalesDTO> topProducts = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                String sql = "SELECT p.productID, p.productName, SUM(od.quantity) as quantitySold, SUM(od.price * od.quantity) as totalRevenue "
+                        +
+                        "FROM tblProduct p " +
+                        "JOIN tblOrderDetail od ON p.productID = od.productID " +
+                        "GROUP BY p.productID, p.productName " +
+                        "ORDER BY quantitySold DESC " +
+                        "LIMIT ?";
+                ptm = conn.prepareStatement(sql);
+                ptm.setInt(1, limit);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    String productID = rs.getString("productID");
+                    String productName = rs.getString("productName");
+                    int quantitySold = rs.getInt("quantitySold");
+                    double totalRevenue = rs.getDouble("totalRevenue");
+                    topProducts.add(new ProductSalesDTO(productID, productName, quantitySold, totalRevenue));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null)
+                rs.close();
+            if (ptm != null)
+                ptm.close();
+            if (conn != null)
+                conn.close();
+        }
+        return topProducts;
+    }
 }

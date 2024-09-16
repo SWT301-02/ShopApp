@@ -10,7 +10,7 @@ import com.google.gson.JsonParser;
 
 public class RecaptchaUtils {
 
-    private static final String SECRET_KEY = "Your recaptcha secret key";
+    private static final String SECRET_KEY = "6Lc_tiQqAAAAANEqD76vWpznqyF0FDTWla9SlU1G";
 
     public static boolean verify(String gRecaptchaResponse) throws Exception {
         if (gRecaptchaResponse == null || gRecaptchaResponse.isEmpty()) {

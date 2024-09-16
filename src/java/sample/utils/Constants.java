@@ -11,11 +11,11 @@ package sample.utils;
  */
 public class Constants {
 
-    public static String GOOGLE_CLIENT_ID = "your client ID here";
+    public static String GOOGLE_CLIENT_ID = "284395568761-pd0ttogds55lc2au56hqn10brhjgstgn.apps.googleusercontent.com";
 
-    public static String GOOGLE_CLIENT_SECRET = "your client secret here";
+    public static String GOOGLE_CLIENT_SECRET = "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";
 
-    public static String GOOGLE_REDIRECT_URI = "your redirect URI";
+    public static String GOOGLE_REDIRECT_URI = "http://localhost:8084/PRJ301_3W_1_JSLT/CallbackController";
 
     public static String GOOGLE_LINK_GET_TOKEN = "https://accounts.google.com/o/oauth2/token";
 
