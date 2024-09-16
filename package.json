@@ -7,13 +7,7 @@
         "test": "test"
     },
     "scripts": {
-        "test": "codeceptjs run --steps",
-        "codeceptjs": "codeceptjs run --steps",
-        "codeceptjs:headless": "HEADLESS=true codeceptjs run --steps",
-        "codeceptjs:ui": "codecept-ui --app",
-        "codeceptjs:demo": "codeceptjs run --steps -c node_modules/@codeceptjs/examples",
-        "codeceptjs:demo:headless": "HEADLESS=true codeceptjs run --steps -c node_modules/@codeceptjs/examples",
-        "codeceptjs:demo:ui": "codecept-ui --app  -c node_modules/@codeceptjs/examples"
+        "test": "codeceptjs run --steps"
     },
     "author": "",
     "license": "ISC",
@@ -30,7 +24,6 @@
     },
     "dependencies": {
         "dotenv": "^16.0.3",
-        "groq-sdk": "^0.7.0",
-        "openai": "^4.61.0"
+        "groq-sdk": "^0.7.0"
     }
 }

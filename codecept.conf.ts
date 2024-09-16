@@ -1,4 +1,6 @@
 import { setHeadlessWhen, setCommonPlugins } from '@codeceptjs/configure';
+require('dotenv').config();
+
 // turn on headless mode when running with HEADLESS=true environment variable
 // export HEADLESS=true && npx codeceptjs run
 setHeadlessWhen(process.env.HEADLESS);
@@ -14,6 +16,9 @@ export const config: CodeceptJS.MainConfig = {
       browser: 'chromium',
       url: 'http://localhost:8084', // Update this to your application's URL
       show: false
+    },
+    GroqAI: {
+      require: './helpers/groq_helper.ts'
     }
   },
   include: {
