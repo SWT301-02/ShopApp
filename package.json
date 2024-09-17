@@ -24,6 +24,7 @@
     },
     "dependencies": {
         "dotenv": "^16.0.3",
-        "groq-sdk": "^0.7.0"
+        "groq-sdk": "^0.7.0",
+        "prj301_3w_1_jslt_fn": "file:"
     }
 }
