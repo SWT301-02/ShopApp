@@ -45,8 +45,9 @@ public class LoginController extends HttpServlet {
         String url = ERROR;
         // get reCaptcha 
         try {
-            String gRecaptcha = request.getParameter("g-recaptcha-response");
-            boolean isVerified = RecaptchaUtils.verify(gRecaptcha);
+//            String gRecaptcha = request.getParameter("g-recaptcha-response");
+//            boolean isVerified = RecaptchaUtils.verify(gRecaptcha);
+            boolean isVerified = true;
             if (isVerified) {
                 HttpSession session = request.getSession();
                 String userID = request.getParameter("userID");
