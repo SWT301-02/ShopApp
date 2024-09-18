@@ -5,6 +5,7 @@
  */
 package sample.controller;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -54,8 +55,8 @@ public class LoginController extends HttpServlet {
 
 //                UserDTO loginUser = dao.checkLogin(userID, password);
                 UserDTO loginUser = dao.checkLoginv2(userID);
-                PBKDF2 pbkdf2 = new PBKDF2();
-                if (loginUser != null && pbkdf2.authenticate(password.toCharArray(), loginUser.getPassword())) {
+                BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), loginUser.getPassword());
+                if (result.verified) {
                         switch (loginUser.getRoleID()) {
                             case AD:
                                 url = AD_PAGE;

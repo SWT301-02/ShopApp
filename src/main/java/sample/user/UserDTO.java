@@ -5,7 +5,7 @@
  */
 package sample.user;
 
-import sample.utils.PBKDF2;
+import at.favre.lib.crypto.bcrypt.BCrypt;
 
 /**
  *
@@ -74,8 +74,7 @@ public class UserDTO {
     }
 
     public void setPassword(String password) {
-        PBKDF2 pbkdf2 = new PBKDF2();
-        this.password = pbkdf2.hash(password.toCharArray());
+        this.password = BCrypt.withDefaults().hashToString(12, password.toCharArray());
     }
     
     public void hiddenPassword(String password) {

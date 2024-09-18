@@ -12,7 +12,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="SWT301_Test_Project" options="-endorseddirs D:\SWT301\SWT301_Test_Project\target/endorsed" />
+      <module name="SWT301_Test_Project" options="-endorseddirs D:\FPT\Fall24\SWT301\ShopApp\target/endorsed" />
     </option>
   </component>
 </project>

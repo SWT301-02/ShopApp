@@ -51,7 +51,7 @@ public class CartDTO {
                     if (product.getQuantity() == 0) {
                         return remove(id);
                     }
-                    this.cart.replace(id, product);
+                    this.cart.put(id, product);
                     check = true;
                 }
             }

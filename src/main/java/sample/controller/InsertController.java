@@ -5,8 +5,8 @@
  */
 package sample.controller;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import sample.user.UserDAO;
 import sample.user.UserDTO;
 import sample.user.UserError;
-import sample.utils.PBKDF2;
 
 /**
  *
@@ -89,8 +88,7 @@ public class InsertController extends HttpServlet {
                 userError.setEmailError("Email already registed!");
             }
             if (check) {
-                PBKDF2 pbkdf2 = new PBKDF2();
-                String hashedPassword = pbkdf2.hash(password.toCharArray());
+                String hashedPassword = BCrypt.withDefaults().hashToString(12, password.toCharArray());
                 UserDTO user = new UserDTO(userID, fullName, roleID, hashedPassword, email);
                 boolean insert = dao.insertv2(user);
                 if (insert) {
