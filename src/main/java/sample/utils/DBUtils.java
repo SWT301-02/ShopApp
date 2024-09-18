@@ -23,7 +23,17 @@ public class DBUtils {
     private static final String DB_USER = "sa";
     private static final String DB_PASSWORD = "12345";
 
-    public static final Connection getConnection() throws ClassNotFoundException, SQLException {
+    public static final Connection getConnection(String dbName, String user, String password) throws ClassNotFoundException,
+        SQLException {
+        Connection conn = null;
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        String url = "jdbc:sqlserver://localhost:1433;databaseName=" + dbName;
+        conn = DriverManager.getConnection(url, user, password);
+        return conn;
+    }
+
+    public static final Connection getConnection() throws ClassNotFoundException,
+        SQLException {
         Connection conn = null;
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         String url = "jdbc:sqlserver://localhost:1433;databaseName=" + DB_NAME;
