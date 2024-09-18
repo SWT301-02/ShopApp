@@ -1,6 +1,6 @@
-require('dotenv').config();
-const { GroqClient } = require('groq-sdk');
-const assert = require('assert');
+import 'dotenv/config';
+import GroqClient from 'groq-sdk';
+import assert from 'assert';
 
 Feature('Groq AI Integration');
 
@@ -10,7 +10,7 @@ Scenario('Test Groq AI response', async ({ I }) => {
         throw new Error('GROQ_API_KEY is not set');
     }
 
-    const client = new GroqClient(apiKey);
+    const client = new GroqClient({ apiKey });
 
     const chatCompletion = await client.chat.completions.create({
         messages: [{ role: "user", content: "Hello, Groq!" }],

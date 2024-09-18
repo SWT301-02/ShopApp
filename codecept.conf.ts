@@ -14,8 +14,9 @@ export const config: CodeceptJS.MainConfig = {
   helpers: {
     Playwright: {
       browser: 'chromium',
-      url: 'http://localhost:8084', // Update this to your application's URL
-      show: false
+      url: 'http://localhost:8085/SWT301_Test_Project', // Update this to your application's URL
+      show: true,
+      waitForAction: 3000 // Wait for 3 seconds (3000 ms) before each action
     },
     GroqAI: {
       require: './helpers/groq_helper.ts'
@@ -24,5 +25,5 @@ export const config: CodeceptJS.MainConfig = {
   include: {
     I: './steps_file'
   },
-  name: 'PRJ301_3W_1_JSLT'
+  name: 'SWT301_Test_Project'
 }

@@ -1,8 +1,8 @@
-const Helper = require('@codeceptjs/helper');
+import Helper from '@codeceptjs/helper';
 const { GroqClient } = require('groq-sdk');
 
 class GroqAI extends Helper {
-    async generateTest(testType, description) {
+    async generateTest(testType: string, description: string) {
         const client = new GroqClient(process.env.GROQ_API_KEY);
         const prompt = `Generate a ${testType} test for the following scenario: ${description}`;
 

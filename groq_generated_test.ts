@@ -1,23 +1,26 @@
 Feature('Groq AI Generated Tests');
 
 Scenario('Generate and run unit test', async ({ I }) => {
-    const unitTestDescription = 'Test the login functionality with valid credentials';
-    const generatedUnitTest = await I.generateTest('unit', unitTestDescription);
-    I.say('Generated Unit Test:');
-    I.say(generatedUnitTest);
+    I.amOnPage('http://localhost:8085/SWT301_Test_Project');
+    I.see('Luxury Fashion Collection', 'h1');
 
     // Here you would typically parse and execute the generated test
     // For demonstration, we'll just assert that a test was generated
-    I.assertNotEqual(generatedUnitTest, '', 'A unit test should be generated');
+
 });
 
 Scenario('Generate and run integration test', async ({ I }) => {
-    const integrationTestDescription = 'Test the end-to-end flow of user registration and login';
-    const generatedIntegrationTest = await I.generateTest('integration', integrationTestDescription);
-    I.say('Generated Integration Test:');
-    I.say(generatedIntegrationTest);
+    I.amOnPage('http://localhost:8085/SWT301_Test_Project');
+    I.see('Luxury Fashion Collection', 'h1');
+    I.click('Login');
+    I.see('Elegant Simplicity', 'h1');
+    I.fillField('userID', 'admin');
+    I.fillField('Password', '123456');
+    // click recaptcha checkbox
+    I.click('I\'m not a robot');
+    I.click('Login');
+    I.see('Welcome: Tao la ad', 'h1');
 
     // Here you would typically parse and execute the generated test
     // For demonstration, we'll just assert that a test was generated
-    I.assertNotEqual(generatedIntegrationTest, '', 'An integration test should be generated');
 });
