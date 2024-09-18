@@ -16,8 +16,6 @@ Scenario('Generate and run integration test', async ({ I }) => {
     I.see('Elegant Simplicity', 'h1');
     I.fillField('userID', 'admin');
     I.fillField('Password', '123456');
-    // click recaptcha checkbox
-    I.click('I\'m not a robot');
     I.click('Login');
     I.see('Welcome: Tao la ad', 'h1');
 

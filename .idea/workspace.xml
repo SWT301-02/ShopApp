@@ -10,11 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24a99add-f69c-4753-b4f5-9de4539e8778" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/codecept.conf.ts" beforeDir="false" afterPath="$PROJECT_DIR$/codecept.conf.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/groq_generated_test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/groq_generated_test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/groq_test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/groq_test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/groq_helper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/groq_helper.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/steps_file.ts" beforeDir="false" afterPath="$PROJECT_DIR$/steps_file.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sample/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sample/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sample/filter/AuthenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sample/filter/AuthenFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,10 +24,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -35,10 +35,10 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2mCjiN4lfBZec5jaPMP1qZQbyV8" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -51,20 +51,23 @@
     "Tomcat Server.Tomcat 9.0.95.executor": "Run",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/SWT301/SWT301_Test_Project",
+    "last_opened_file_path": "D:/HSF/ShopApp/shopapp-backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "D:\\SWT301\\SWT301_Test_Project\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager">
     <configuration name="Tomcat 9.0.95" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.95" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="SWT301_Test_Project:war exploded">
@@ -170,10 +173,16 @@
       <option name="presentableId" value="Default" />
       <updated>1726587581510</updated>
       <workItem from="1726587582704" duration="2573000" />
+      <workItem from="1726623423610" duration="5602000" />
+      <workItem from="1726632692619" duration="37000" />
+      <workItem from="1726648983900" duration="395000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SWT301_Test_Project$Tomcat_9_0_95.ic" NAME="Tomcat 9.0.95 Coverage Results" MODIFIED="1726625093299" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>

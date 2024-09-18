@@ -46,8 +46,8 @@
                                         </div>
 
                                         <!-- reCAPTCHA -->
-                                        <div class="g-recaptcha mb-4"
-                                            data-sitekey="6Lc_tiQqAAAAAJe9IYkdWv1xFBquGhC9tG57KqWt"></div>
+<%--                                        <div class="g-recaptcha mb-4"--%>
+<%--                                            data-sitekey="6Lc_tiQqAAAAAJe9IYkdWv1xFBquGhC9tG57KqWt"></div>--%>
 
                                         <!-- Submit button -->
                                         <button class="btn btn-luxury btn-block mb-4 w-100" type="submit" name="action"

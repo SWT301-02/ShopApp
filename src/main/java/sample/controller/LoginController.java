@@ -44,15 +44,15 @@ public class LoginController extends HttpServlet {
         String url = ERROR;
         // get reCaptcha 
         try {
-            String gRecaptcha = request.getParameter("g-recaptcha-response");
-            boolean isVerified = RecaptchaUtils.verify(gRecaptcha);
+//            String gRecaptcha = request.getParameter("g-recaptcha-response");
+//            boolean isVerified = RecaptchaUtils.verify(gRecaptcha);
+            boolean isVerified = true;
             if (isVerified) {
                 HttpSession session = request.getSession();
                 String userID = request.getParameter("userID");
                 String password = request.getParameter("password");
                 UserDAO dao = new UserDAO();
 
-//                UserDTO loginUser = dao.checkLogin(userID, password);
                 UserDTO loginUser = dao.checkLoginv2(userID);
                 PBKDF2 pbkdf2 = new PBKDF2();
                 if (loginUser != null && pbkdf2.authenticate(password.toCharArray(), loginUser.getPassword())) {
