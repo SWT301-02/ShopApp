@@ -1,0 +1,29 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.admin-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+.admin-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.admin-form .form-label {
+    font-weight: 600;
+}
+
+.admin-form .form-control {
+    border-radius: 5px;
+}
+
+.admin-form .btn {
+    border-radius: 5px;
+}

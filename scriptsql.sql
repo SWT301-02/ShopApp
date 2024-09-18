@@ -4,17 +4,17 @@ GO
 DROP DATABASE UserManagement
 GO
 
-USE UserManagement
-GO
--- Create the new database if it does not exist already
 CREATE DATABASE UserManagement
+GO
+
+USE UserManagement
 GO
 
 CREATE TABLE [dbo].[tblUsers]
 (
     [userID] NVARCHAR (50) NOT NULL,
     [fullName] NVARCHAR (50) NULL,
-    [password] NVARCHAR (50) NULL,
+    [password] NVARCHAR (255) NULL,
     [roleID] NVARCHAR (50) NULL,
     [status] BIT NULL,
     [email] NVARCHAR (50) NULL,

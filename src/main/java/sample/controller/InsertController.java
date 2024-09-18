@@ -6,6 +6,7 @@
 package sample.controller;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
@@ -13,15 +14,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import sample.user.UserDAO;
 import sample.user.UserDTO;
 import sample.user.UserError;
 
 /**
- *
  * @author lmao
  */
-@WebServlet(name = "InsertController", urlPatterns = {"/InsertController"})
+@WebServlet(name = "InsertController", urlPatterns = { "/InsertController" })
 public class InsertController extends HttpServlet {
 
     private static final String ERROR_AD = "insert.jsp";
@@ -31,12 +32,13 @@ public class InsertController extends HttpServlet {
     private static final String SUCCESS_REGIS = "register.jsp";
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -47,7 +49,7 @@ public class InsertController extends HttpServlet {
         UserError userError = new UserError();
         UserDTO loginUser = (UserDTO) request.getSession().getAttribute("LOGIN_USER");
         if (loginUser == null) {
-            loginUser = new UserDTO("", "", "", "US","");
+            loginUser = new UserDTO("", "", "US", "", "");
         }
 
         try {
@@ -90,7 +92,7 @@ public class InsertController extends HttpServlet {
             if (check) {
                 String hashedPassword = BCrypt.withDefaults().hashToString(12, password.toCharArray());
                 UserDTO user = new UserDTO(userID, fullName, roleID, hashedPassword, email);
-                boolean insert = dao.insertv2(user);
+                boolean insert = dao.insert(user);
                 if (insert) {
                     request.setAttribute("SUCCESS", "User Created!");
                     if ("AD".equals(loginUser.getRoleID())) {
@@ -137,14 +139,16 @@ public class InsertController extends HttpServlet {
         System.out.println("Email format: " + check);
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
+    // + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -155,10 +159,10 @@ public class InsertController extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

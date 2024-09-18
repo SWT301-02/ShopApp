@@ -11,13 +11,11 @@
   <component name="ChangeListManager">
     <list default="true" id="24a99add-f69c-4753-b4f5-9de4539e8778" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sample/controller/AddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sample/controller/AddController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sample/controller/InsertController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sample/controller/InsertController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sample/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sample/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sample/user/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sample/user/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sample/utils/PBKDF2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sample/utils/PBKDF2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sample/user/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sample/user/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/insert.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/insert.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,10 +49,10 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Tomcat Server.Tomcat 9.0.94.executor": "Run",
-    "Tomcat Server.Tomcat 9.0.95.executor": "Run",
+    "Tomcat Server.Tomcat 9.0.95.executor": "Debug",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/FPT/Fall24/SWT301/ShopApp",
+    "last_opened_file_path": "D:/SWT301/SWT301_Test_Project",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -67,7 +65,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.DBUtils">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.95">
     <configuration name="DBUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="sample.utils.DBUtils" />
       <module name="SWT301_Test_Project" />
@@ -195,10 +193,37 @@
       <workItem from="1726606219644" duration="1321000" />
       <workItem from="1726621390295" duration="814000" />
       <workItem from="1726641034364" duration="816000" />
+      <workItem from="1726668245107" duration="2599000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/sample/controller/InsertController.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/sample/user/UserDAO.java</url>
+          <line>310</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/sample/user/UserDAO.java</url>
+          <line>275</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
+        <watch expression="response" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

@@ -28,11 +28,12 @@ public class UserDAO {
     private static final String UPDATE = "UPDATE tblUsers SET fullName = ?, roleID = ? WHERE userID = ?";
     private static final String DUPLICATE_ID = "SELECT fullName FROM dbo.tblUsers WHERE userID = ?";
     private static final String DUPLICATE_EMAIL = "SELECT fullName FROM dbo.tblUsers WHERE userID = ?";
-    private static final String INSERT = "INSERT INTO tblUsers(userId, fullName, roleID, password, email) "
+    private static final String INSERT = "INSERT INTO tblUsers(userID, fullName, roleID, password, email) "
             + "                         VALUES(?,?,?,?,?)";
     private static final String SEARCHTOP = "SELECT TOP 1 userID, fullName, roleID FROM dbo.tblUsers";
 
-    public UserDTO checkLogin(String userID, String password) throws SQLException, ClassNotFoundException, NamingException {
+    public UserDTO checkLogin(String userID, String password)
+            throws SQLException, ClassNotFoundException, NamingException {
         UserDTO user = null;
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -64,7 +65,7 @@ public class UserDAO {
         }
         return user;
     }
-    
+
     public UserDTO checkLoginv2(String userID) throws SQLException, ClassNotFoundException, NamingException {
         UserDTO user = null;
         Connection conn = null;
@@ -241,7 +242,7 @@ public class UserDAO {
         }
         return check;
     }
-    
+
     public boolean checkDublicateEmail(String email) throws SQLException, ClassNotFoundException, NamingException {
         boolean check = false;
         Connection conn = null;
@@ -285,7 +286,16 @@ public class UserDAO {
                 ptm.setString(4, user.getPassword());
                 ptm.setString(5, user.getEmail());
                 checkInsert = ptm.executeUpdate() > 0;
+
+                if (!checkInsert) {
+                    System.out.println("Insert failed. No rows affected.");
+                }
+            } else {
+                System.out.println("Failed to establish database connection.");
             }
+        } catch (SQLException e) {
+            System.out.println("SQL Exception occurred: " + e.getMessage());
+            throw e;
         } finally {
             if (ptm != null) {
                 ptm.close();
@@ -297,7 +307,7 @@ public class UserDAO {
         return checkInsert;
     }
 
-    public boolean insertv2(UserDTO user) throws ClassNotFoundException, SQLException, NamingException {
+    public boolean insertv2(UserDTO user) throws SQLException, ClassNotFoundException {
         boolean checkInsert = false;
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -310,6 +320,7 @@ public class UserDAO {
                 ptm.setString(3, user.getRoleID());
                 ptm.setString(4, user.getPassword());
                 ptm.setString(5, user.getEmail());
+                System.out.println(ptm.toString());
                 checkInsert = ptm.executeUpdate() > 0;
             }
         } finally {
@@ -322,8 +333,8 @@ public class UserDAO {
         }
         return checkInsert;
     }
-    
-    public UserDTO searchTop() throws SQLException, ClassNotFoundException, NamingException{
+
+    public UserDTO searchTop() throws SQLException, ClassNotFoundException, NamingException {
         UserDTO user = null;
         Connection conn = null;
         PreparedStatement ptm = null;
