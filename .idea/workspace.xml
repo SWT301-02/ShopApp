@@ -10,9 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24a99add-f69c-4753-b4f5-9de4539e8778" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/groq_generated_test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/groq_generated_test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CICD_test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sample/controller/CheckoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sample/controller/CheckoutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sample/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sample/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sample/shopping/CartDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sample/shopping/CartDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sample/utils/DBUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sample/utils/DBUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,36 +48,109 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Tomcat Server.Tomcat 9.0.94.executor&quot;: &quot;Run&quot;,
-    &quot;Tomcat Server.Tomcat 9.0.95.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/SWT301/SWT301_Test_Project&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.DBUtils.executor": "Run",
+    "JUnit.CheckoutControllerTest.executor": "Run",
+    "JUnit.CheckoutControllerTest.testProcessPayment.executor": "Debug",
+    "JUnit.UserDAOTest.testCheckDuplicate.executor": "Run",
+    "JUnit.UserDAOTest.testCheckLogin.executor": "Run",
+    "JUnit.UserDAOTest.testInsertAndDelete.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Tomcat Server.Tomcat 9.0.94.executor": "Run",
+    "Tomcat Server.Tomcat 9.0.95.executor": "Run",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/SWT301/SWT301_Test_Project",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.95">
-    <configuration name="DBUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sample.utils.DBUtils" />
+}]]></component>
+  <component name="RunManager" selected="JUnit.CheckoutControllerTest.testProcessPayment">
+    <configuration name="CheckoutControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SWT301_Test_Project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="sample.utils.*" />
+          <option name="PATTERN" value="sample.controllertest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="sample.controllertest" />
+      <option name="MAIN_CLASS_NAME" value="sample.controllertest.CheckoutControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CheckoutControllerTest.testProcessPayment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SWT301_Test_Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sample.controllertest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="sample.controllertest" />
+      <option name="MAIN_CLASS_NAME" value="sample.controllertest.CheckoutControllerTest" />
+      <option name="METHOD_NAME" value="testProcessPayment" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserDAOTest.testCheckDuplicate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SWT301_Test_Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sample.usertest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="sample.usertest" />
+      <option name="MAIN_CLASS_NAME" value="sample.usertest.UserDAOTest" />
+      <option name="METHOD_NAME" value="testCheckDuplicate" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserDAOTest.testCheckLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SWT301_Test_Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sample.usertest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="sample.usertest" />
+      <option name="MAIN_CLASS_NAME" value="sample.usertest.UserDAOTest" />
+      <option name="METHOD_NAME" value="testCheckLogin" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserDAOTest.testInsertAndDelete" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SWT301_Test_Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sample.usertest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="sample.usertest" />
+      <option name="MAIN_CLASS_NAME" value="sample.usertest.UserDAOTest" />
+      <option name="METHOD_NAME" value="testInsertAndDelete" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -166,7 +245,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DBUtils" />
+        <item itemvalue="JUnit.CheckoutControllerTest.testProcessPayment" />
+        <item itemvalue="JUnit.CheckoutControllerTest" />
+        <item itemvalue="JUnit.UserDAOTest.testInsertAndDelete" />
+        <item itemvalue="JUnit.UserDAOTest.testCheckDuplicate" />
+        <item itemvalue="JUnit.UserDAOTest.testCheckLogin" />
       </list>
     </recent_temporary>
   </component>
@@ -193,6 +276,8 @@
       <workItem from="1726668245107" duration="3371000" />
       <workItem from="1726671723526" duration="82000" />
       <workItem from="1726671813202" duration="108000" />
+      <workItem from="1726671990363" duration="662000" />
+      <workItem from="1726672755211" duration="6269000" />
     </task>
     <servers />
   </component>
@@ -209,13 +294,28 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/sample/user/UserDAO.java</url>
-          <line>310</line>
-          <option name="timeStamp" value="2" />
+          <line>36</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/sample/user/UserDAO.java</url>
-          <line>275</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/src/main/java/sample/controller/CheckoutController.java</url>
+          <line>132</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/sample/controllertest/CheckoutControllerTest.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/sample/shopping/CartDAO.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/sample/shopping/CartDAO.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -128,7 +128,7 @@ public class CheckoutController extends HttpServlet {
         }
     }
 
-    private boolean processPayment(CartDTO cart, UserDTO user, String paymentMethod) throws SQLException, ClassNotFoundException {
+    public boolean processPayment(CartDTO cart, UserDTO user, String paymentMethod) throws SQLException, ClassNotFoundException {
         try {
             CartDAO cartDAO = new CartDAO();
             double total = cart.getTotalPrice();
@@ -146,12 +146,12 @@ public class CheckoutController extends HttpServlet {
                 for (ProductDTO product : cart.getCart().values()) {
                     boolean orderDetailSaved = cartDAO.saveOrderDetail(orderID, product);
                     if (!orderDetailSaved) {
-                        log("Failed to save order details for product: " + product.getProductID());
+                        System.out.println("Failed to save order detail for product: " + product.getProductID());
                         return false;
                     }
                     boolean quantityUpdated = cartDAO.updateProductQuantity(product.getProductID(), product.getQuantity());
                     if (!quantityUpdated) {
-                        log("Failed to update quantity for product: " + product.getProductID());
+                        System.out.println("Failed to update product quantity for product: " + product.getProductID());
                         return false;
                     }
                 }

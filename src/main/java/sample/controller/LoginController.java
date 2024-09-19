@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import sample.user.UserDAO;
 import sample.user.UserDTO;
-import sample.utils.*;
 
 /**
  *
