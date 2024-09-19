@@ -21,7 +21,7 @@ public class DBUtils {
 
     private static final String DB_NAME = "UserManagement";
     private static final String DB_USER = "sa";
-    private static final String DB_PASSWORD = "12345";
+    private static final String DB_PASSWORD = "Luucaohoang1604^^";
 
     public static final Connection getConnection(String dbName, String user, String password) throws ClassNotFoundException,
         SQLException {

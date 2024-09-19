@@ -10,8 +10,8 @@ class DBUtilsTest {
     DBUtils dbUtils = null;
     String dbName = "UserManagement";
     String user = "sa";
-    // String password = "Luucaohoang1604^^";
-    String password = "123455";
+    String dockerPassword = "Luucaohoang1604^^";
+    String localPassword = "123455";
 
     @BeforeEach
     public void setup() throws Exception {
@@ -21,7 +21,7 @@ class DBUtilsTest {
     @Test
     void getConnection() {
         try {
-            assertNotNull(dbUtils.getConnection(dbName, user, password));
+            assertNotNull(dbUtils.getConnection(dbName, user, dockerPassword));
         } catch (Exception e) {
             fail("Error, DB configuration false: " + e.getMessage());
         }

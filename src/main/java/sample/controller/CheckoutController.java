@@ -128,7 +128,7 @@ public class CheckoutController extends HttpServlet {
         }
     }
 
-    boolean processPayment(CartDTO cart, UserDTO user, String paymentMethod) throws SQLException, ClassNotFoundException {
+    public boolean processPayment(CartDTO cart, UserDTO user, String paymentMethod) throws SQLException, ClassNotFoundException {
         try {
             CartDAO cartDAO = new CartDAO();
             double total = cart.getTotalPrice();

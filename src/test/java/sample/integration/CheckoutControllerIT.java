@@ -1,4 +1,4 @@
-package sample.controller;
+package sample.integration.controller;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +10,7 @@ import sample.shopping.CartDTO;
 import sample.shopping.ProductDTO;
 import sample.user.UserDTO;
 
-class CheckoutControllerTest {
+class CheckoutControllerIT {
     private CheckoutController checkoutController;
 
     @BeforeEach
