@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   mssql:
     image: mcr.microsoft.com/mssql/server:2019-latest
@@ -9,6 +11,14 @@ services:
       - SA_PASSWORD=Luucaohoang1604^^
     volumes:
       - mssql_data:/var/opt/mssql
+    networks:
+      - mssql_network
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    ports:
+      - "8081:8080"
     networks:
       - mssql_network
 

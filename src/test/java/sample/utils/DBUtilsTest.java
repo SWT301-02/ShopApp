@@ -10,7 +10,7 @@ class DBUtilsTest {
     DBUtils dbUtils = null;
     String dbName = "UserManagement";
     String user = "sa";
-    String password = "12345";
+    String password = "Luucaohoang1604^^";
 
     @BeforeEach
     public void setup() throws Exception {
