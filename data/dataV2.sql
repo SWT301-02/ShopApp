@@ -1,4 +1,10 @@
+CREATE DATABASE UserManagement
+
+GO
+
 USE UserManagement
+
+GO
 
 CREATE TABLE [dbo].[tblUsers]
 (

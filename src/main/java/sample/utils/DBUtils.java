@@ -19,15 +19,18 @@ import javax.sql.DataSource;
  */
 public class DBUtils {
 
-    private static final String DB_NAME = "UserManagement";
-    private static final String DB_USER = "sa";
-    private static final String DB_PASSWORD = "Luucaohoang1604^^";
+    public static final String DB_NAME = "UserManagement";
+    public static final String DB_USER = "sa";
+    public static final String DB_PASSWORD = "12345";
+    public static final String DOCKER_DB_PASSWORD = "Luucaohoang1604^^";
+    public static final String DOCKER_PORT = "1435";
 
-    public static final Connection getConnection(String dbName, String user, String password) throws ClassNotFoundException,
+    //Connect to docker container
+    public static final Connection getConnection(String dockerPort, String user, String password) throws ClassNotFoundException,
         SQLException {
         Connection conn = null;
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        String url = "jdbc:sqlserver://localhost:1433;databaseName=" + dbName;
+        String url = String.format("jdbc:sqlserver://localhost:%s;databaseName=UserManagement", dockerPort);
         conn = DriverManager.getConnection(url, user, password);
         return conn;
     }

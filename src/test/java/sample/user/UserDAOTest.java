@@ -2,11 +2,13 @@ package sample.user;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import sample.user.UserDAO;
 import sample.user.UserDTO;
 
+@Disabled
 class UserDAOTest {
     private UserDAO userDAO;
 

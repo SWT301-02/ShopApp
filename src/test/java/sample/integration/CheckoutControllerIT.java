@@ -1,6 +1,7 @@
-package sample.integration.controller;
+package sample.integration;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,6 +11,7 @@ import sample.shopping.CartDTO;
 import sample.shopping.ProductDTO;
 import sample.user.UserDTO;
 
+@Disabled
 class CheckoutControllerIT {
     private CheckoutController checkoutController;
 

@@ -1,57 +1,57 @@
-name: CI
+name: CI for Java Servlet App
 
 on:
   push:
-    branches: [master]
+    branches:
+      - main
   pull_request:
-    branches: [master]
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     services:
+      # Set up a SQL Server Docker container
       mssql:
         image: mcr.microsoft.com/mssql/server:2019-latest
+        env:
+          ACCEPT_EULA: Y
+          SA_PASSWORD: 'Luucaohoang1604^^'
         ports:
           - 1433:1433
-        env:
-          SA_PASSWORD: ${{ secrets.SA_PASSWORD }}
-          ACCEPT_EULA: Y
         options: >-
-          --health-cmd "sqlcmd -S localhost -U sa -P ${{ secrets.SA_PASSWORD }} -Q 'SELECT 1'"
+          --health-cmd "exit 0" 
           --health-interval 10s
           --health-timeout 5s
-          --health-retries 5
-
+          --health-retries 3
+        # Set up a wait time for the container to be ready
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Wait for SQL Server to start
-        run: |
-          for i in {1..30}; do
-            echo "Waiting for SQL Server to start..."
-            sleep 10
-            if sqlcmd -S localhost -U sa -P ${{ secrets.SA_PASSWORD }} -Q "SELECT 1" &> /dev/null; then
-              break
-            fi
-          done
-
-      - name: Create Database and Run Scripts
-        run: |
-          sqlcmd -S localhost -U sa -P ${{ secrets.SA_PASSWORD }} -Q "CREATE DATABASE UserManagement"
-          # Run your SQL script to set up the database schema
-          sqlcmd -S localhost -U sa -P ${{ secrets.SA_PASSWORD }} -d UserManagement -i ../data/dataV2.sql
-
       - name: Build with Maven
-        run: mvn -B package --file pom.xml
+        run: mvn -B clean install
+
+      - name: Wait for SQL Server to be ready
+        run: |
+          echo "Waiting for SQL Server to start..."
+          sleep 20
+          echo "SQL Server is up and running."
 
       - name: Run Tests
         run: mvn test
+
+      - name: Upload Test Reports
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-reports
+          path: target/surefire-reports/

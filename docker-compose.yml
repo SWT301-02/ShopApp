@@ -1,11 +1,9 @@
-version: '3.8'
-
 services:
   mssql:
-    image: mcr.microsoft.com/mssql/server:2019-latest
+    image: lcaohoanq/swt301db:1.0
     container_name: ShopApp
     ports:
-      - "1433:1433"
+      - "1435:1433"
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=Luucaohoang1604^^

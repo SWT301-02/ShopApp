@@ -28,6 +28,7 @@ public class ProductDAO {
     private static final String INSERT = "INSERT INTO tblProducts (productID, productName, price, , quantity, status) VALUES(?,?,?,?,?)";
     private static final String CHECK_QUANTITY = "SELECT quantity FROM UserManagement.[dbo].[tblProducts] WHERE productID = ?";
 
+    @Deprecated
     public List<ProductDTO> getListProducts(String search) throws SQLException {
         List<ProductDTO> list = new ArrayList<>();
         Connection conn = null;
@@ -35,6 +36,44 @@ public class ProductDAO {
         ResultSet rs = null;
         try {
             conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(SEARCH_NAME);
+                ptm.setString(1, "%" + search + "%");
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    String productID = rs.getString("productID");
+                    String productName = rs.getString("productName");
+                    float price = rs.getFloat("price");
+                    int quantity = rs.getInt("quantity");
+                    int status = rs.getInt("status");
+                    String imageUrl = rs.getString("imageUrl");
+                    list.add(new ProductDTO(productID, productName, price, quantity, imageUrl));
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return list;
+    }
+
+    // run with docker container
+    public List<ProductDTO> getListProductsV2(String search) throws SQLException {
+        List<ProductDTO> list = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection(DBUtils.DOCKER_PORT, DBUtils.DB_USER, DBUtils.DOCKER_DB_PASSWORD);
             if (conn != null) {
                 ptm = conn.prepareStatement(SEARCH_NAME);
                 ptm.setString(1, "%" + search + "%");

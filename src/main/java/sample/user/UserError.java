@@ -5,10 +5,15 @@
  */
 package sample.user;
 
-/**
- *
- * @author hd
- */
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@ToString
 public class UserError {
     private String userIDError;
     private String fullNameError;
@@ -28,72 +33,4 @@ public class UserError {
         this.error = "";
     }
 
-    public UserError(String userIDError, String fullNameError, String roleIDError, String passwordError, String confirmError, String emailError, String error) {
-        this.userIDError = userIDError;
-        this.fullNameError = fullNameError;
-        this.roleIDError = roleIDError;
-        this.passwordError = passwordError;
-        this.emailError = emailError;
-        this.confirmError = confirmError;
-        this.error = error;
-    }
-
-    public String getUserIDError() {
-        return userIDError;
-    }
-
-    public void setUserIDError(String userIDError) {
-        this.userIDError = userIDError;
-    }
-
-    public String getFullNameError() {
-        return fullNameError;
-    }
-
-    public void setFullNameError(String fullNameError) {
-        this.fullNameError = fullNameError;
-    }
-
-    public String getRoleIDError() {
-        return roleIDError;
-    }
-
-    public void setRoleIDError(String roleIDError) {
-        this.roleIDError = roleIDError;
-    }
-
-    public String getPasswordError() {
-        return passwordError;
-    }
-
-    public void setPasswordError(String passwordError) {
-        this.passwordError = passwordError;
-    }
-
-    public String getConfirmError() {
-        return confirmError;
-    }
-
-    public void setConfirmError(String confirmError) {
-        this.confirmError = confirmError;
-    }
-
-    public String getEmailError() {
-        return emailError;
-    }
-
-    public void setEmailError(String emailError) {
-        this.emailError = emailError;
-    }
-
-    public String getError() {
-        return error;
-    }
-
-    public void setError(String error) {
-        this.error = error;
-    }
-    
-    
-    
 }
