@@ -16,10 +16,10 @@ jobs:
         ports:
           - 1433:1433
         env:
-          SA_PASSWORD: ${{ secrets.DB_SA_PASSWORD }}
+          SA_PASSWORD: ${{ secrets.SA_PASSWORD }}
           ACCEPT_EULA: Y
         options: >-
-          --health-cmd "sqlcmd -S localhost -U sa -P ${{ secrets.DB_SA_PASSWORD }} -Q 'SELECT 1'"
+          --health-cmd "sqlcmd -S localhost -U sa -P ${{ secrets.SA_PASSWORD }} -Q 'SELECT 1'"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
@@ -36,15 +36,15 @@ jobs:
           for i in {1..30}; do
             echo "Waiting for SQL Server to start..."
             sleep 10
-            if sqlcmd -S localhost -U sa -P ${{ secrets.DB_SA_PASSWORD }} -Q "SELECT 1" &> /dev/null; then
+            if sqlcmd -S localhost -U sa -P ${{ secrets.SA_PASSWORD }} -Q "SELECT 1" &> /dev/null; then
               break
             fi
           done
       - name: Create Database and Run Scripts
         run: |
-          sqlcmd -S localhost -U sa -P ${{ secrets.DB_SA_PASSWORD }} -Q "CREATE DATABASE UserManagement"
+          sqlcmd -S localhost -U sa -P ${{ secrets.SA_PASSWORD }} -Q "CREATE DATABASE UserManagement"
           # Run your SQL script to set up the database schema
-          sqlcmd -S localhost -U sa -P ${{ secrets.DB_SA_PASSWORD }} -d UserManagement -i ../data/dataV2.sql
+          sqlcmd -S localhost -U sa -P ${{ secrets.SA_PASSWORD }} -d UserManagement -i ../data/dataV2.sql
       - name: Build with Maven
         run: mvn -B package --file pom.xml
       - name: Run Tests
