@@ -91,3 +91,4 @@ src/main/ts/.env
 node_modules/
 .env
 logs/
+output/
