@@ -33,7 +33,8 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '17'
-          distribution: 'temurin'
+          distribution: 'corretto'
+          cache: maven
 
       - name: Build with Maven
         run: mvn -B clean install
@@ -47,9 +48,9 @@ jobs:
       - name: Run Tests
         run: mvn test
 
-      - name: Upload Test Reports
+      - name: Upload Test Report
+        uses: actions/upload-artifact@v4
         if: always()
-        uses: actions/upload-artifact@v2
         with:
-          name: test-reports
-          path: target/surefire-reports/
+          name: test-report
+          path: target/site/surefire-report.html
