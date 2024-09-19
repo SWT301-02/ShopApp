@@ -17,6 +17,7 @@ export = function () {
 
     async logout() {
       this.click('Logout');
+      this.see('Luxury Fashion Collection', 'h1');
     }
 
   });

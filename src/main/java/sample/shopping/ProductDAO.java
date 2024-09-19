@@ -11,10 +11,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import sample.utils.DBUtils;
 
 /**
- *
  * @author lmao
  */
 public class ProductDAO {
@@ -25,7 +25,7 @@ public class ProductDAO {
     private static final String DELETE = "DELETE UserManagement.[dbo].[tblProducts] WHERE (productID = ?)";
     private static final String UPDATE = "UPDATE UserManagement.[dbo].[tblProducts] SET  price = ?, quantity = ? WHERE productID = ?";
     private static final String CHECK_DUPLICATE = "SELECT productID FROM UserManagement.[dbo].[tblProducts] WHERE productID = ?  ";
-    private static final String INSERT = "INSERT INTO tblProducts (productID, productName, price, , quantity, status) VALUES(?,?,?,?,?)";
+    private static final String INSERT = "INSERT INTO tblProducts (productID, productName, price, quantity, status, imageUrl) VALUES(?,?,?,?,?,?)";
     private static final String CHECK_QUANTITY = "SELECT quantity FROM UserManagement.[dbo].[tblProducts] WHERE productID = ?";
 
     @Deprecated
@@ -104,6 +104,7 @@ public class ProductDAO {
         return list;
     }
 
+    @Deprecated
     public List<ProductDTO> getListProducts(int min, int max) throws SQLException {
         List<ProductDTO> list = new ArrayList<>();
         Connection conn = null;
@@ -146,12 +147,55 @@ public class ProductDAO {
         return list;
     }
 
+    public List<ProductDTO> getListProductsV2(int min, int max) throws SQLException {
+        List<ProductDTO> list = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            try {
+                conn = DBUtils.getConnection(DBUtils.DOCKER_PORT, DBUtils.DB_USER, DBUtils.DOCKER_DB_PASSWORD);
+                if (conn != null) {
+                    ptm = conn.prepareStatement(SEARCH);
+                    rs = ptm.executeQuery();
+                    while (rs.next()) {
+                        String productID = rs.getString("productID");
+                        String productName = rs.getString("productName");
+                        float price = rs.getFloat("price");
+                        int quantity = rs.getInt("quantity");
+                        int status = rs.getInt("status");
+                        String imageUrl = rs.getString("imageUrl");
+                        if (price >= min && price <= max) {
+                            list.add(new ProductDTO(productID, productName, price, quantity, imageUrl));
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            } finally {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ptm != null) {
+                    ptm.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            }
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+        }
+        return list;
+    }
+
+
     public boolean delete(String productID) throws SQLException {
         boolean checkDelete = false;
         Connection conn = null;
         PreparedStatement ptm = null;
         try {
-            conn = DBUtils.getConnection();
+            conn = DBUtils.getConnection(DBUtils.DOCKER_PORT, DBUtils.DB_USER, DBUtils.DOCKER_DB_PASSWORD);
             if (conn != null) {
                 ptm = conn.prepareStatement(DELETE);
                 ptm.setString(1, productID);
@@ -366,6 +410,35 @@ public class ProductDAO {
             }
         }
         return product;
+    }
+
+    public boolean insert(ProductDTO product) throws SQLException {
+        boolean checkInsert = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        try {
+            conn = DBUtils.getConnection(DBUtils.DOCKER_PORT, DBUtils.DB_USER, DBUtils.DOCKER_DB_PASSWORD);
+            if (conn != null) {
+                ptm = conn.prepareStatement(INSERT);
+                ptm.setString(1, product.getProductID());
+                ptm.setString(2, product.getProductName());
+                ptm.setFloat(3, product.getPrice());
+                ptm.setInt(4, product.getQuantity());
+                ptm.setInt(5, 1);
+                ptm.setString(6, product.getImageUrl());
+                checkInsert = ptm.executeUpdate() > 0;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return checkInsert;
     }
 
     public List<ProductSalesDTO> getTopSellingProducts(int limit) throws SQLException {
