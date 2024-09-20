@@ -42,10 +42,6 @@ jobs:
           sleep 20
           echo "SQL Server is up and running."
 
-      - name: Check SQL Server Logs
-        run: |
-          docker logs $(docker ps -q --filter ancestor=lcaohoanq/swt301db:1.1)
-
       - name: Build with Maven
         run: mvn -B clean install
 
