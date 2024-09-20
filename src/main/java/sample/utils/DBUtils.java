@@ -24,6 +24,7 @@ public class DBUtils {
     public static final String DB_PASSWORD = "12345";
     public static final String DOCKER_DB_PASSWORD = "Luucaohoang1604^^";
     public static final String DOCKER_PORT = "1435";
+    public static final String CI_PORT = "1433";
 
     //Connect to docker container
     public static final Connection getConnection(String dockerPort, String user, String password) throws ClassNotFoundException,

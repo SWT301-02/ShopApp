@@ -43,10 +43,10 @@ jobs:
           echo "SQL Server is up and running."
 
       - name: Build with Maven
-        run: mvn -B clean install -Ddb.user=dev -Ddb.password='Luucaohoang1604^^' -Ddb.url='jdbc:sqlserver://127.0.0.1:1435;databaseName=UserManagement'
+        run: mvn -B clean install -Ddb.user=dev -Ddb.password='Luucaohoang1604^^' -Ddb.url='jdbc:sqlserver://127.0.0.1:1433;databaseName=UserManagement'
 
       - name: Run Tests
-        run: mvn test -Ddb.user=dev -Ddb.password='Luucaohoang1604^^' -Ddb.url='jdbc:sqlserver://127.0.0.1:1435;databaseName=UserManagement'
+        run: mvn test -Ddb.user=dev -Ddb.password='Luucaohoang1604^^' -Ddb.url='jdbc:sqlserver://127.0.0.1:1433;databaseName=UserManagement'
 
       - name: Upload Test Report
         uses: actions/upload-artifact@v4
