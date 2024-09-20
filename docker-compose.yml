@@ -1,6 +1,6 @@
 services:
   mssql:
-    image: lcaohoanq/swt301db:1.0
+    image: lcaohoanq/swt301db:1.1
     container_name: ShopApp
     ports:
       - "1435:1433"
