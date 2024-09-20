@@ -17,7 +17,7 @@ services:
     image: adminer
     container_name: adminer
     ports:
-      - "8081:8080"
+      - "8082:8080"
     networks:
       - mssql_network
     restart: unless-stopped
