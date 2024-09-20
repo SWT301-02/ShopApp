@@ -2,9 +2,9 @@ name: CI for Java Servlet App
 
 on:
   push:
-    branches: [ master ]
+    branches: [ feature/handle-ci ]
   pull_request:
-    branches: [ master ]
+    branches: [ feature/handle-ci ]
 
 jobs:
   build:
