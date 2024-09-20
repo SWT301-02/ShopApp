@@ -73,7 +73,7 @@ public class ProductDAO {
         PreparedStatement ptm = null;
         ResultSet rs = null;
         try {
-            conn = DBUtils.getConnection(DBUtils.DOCKER_PORT, DBUtils.DB_USER, DBUtils.DOCKER_DB_PASSWORD);
+            conn = DBUtils.getConnection(DBUtils.DOCKER_PORT, DBUtils.DB_ROOT_USER, DBUtils.DOCKER_DB_PASSWORD);
             if (conn != null) {
                 ptm = conn.prepareStatement(SEARCH_NAME);
                 ptm.setString(1, "%" + search + "%");
@@ -154,7 +154,7 @@ public class ProductDAO {
         ResultSet rs = null;
         try {
             try {
-                conn = DBUtils.getConnection(DBUtils.DOCKER_PORT, DBUtils.DB_USER, DBUtils.DOCKER_DB_PASSWORD);
+                conn = DBUtils.getConnection(DBUtils.DOCKER_PORT, DBUtils.DB_ROOT_USER, DBUtils.DOCKER_DB_PASSWORD);
                 if (conn != null) {
                     ptm = conn.prepareStatement(SEARCH);
                     rs = ptm.executeQuery();
@@ -195,7 +195,7 @@ public class ProductDAO {
         Connection conn = null;
         PreparedStatement ptm = null;
         try {
-            conn = DBUtils.getConnection(DBUtils.DOCKER_PORT, DBUtils.DB_USER, DBUtils.DOCKER_DB_PASSWORD);
+            conn = DBUtils.getConnection(DBUtils.DOCKER_PORT, DBUtils.DB_ROOT_USER, DBUtils.DOCKER_DB_PASSWORD);
             if (conn != null) {
                 ptm = conn.prepareStatement(DELETE);
                 ptm.setString(1, productID);
@@ -417,7 +417,7 @@ public class ProductDAO {
         Connection conn = null;
         PreparedStatement ptm = null;
         try {
-            conn = DBUtils.getConnection(DBUtils.DOCKER_PORT, DBUtils.DB_USER, DBUtils.DOCKER_DB_PASSWORD);
+            conn = DBUtils.getConnection(DBUtils.DOCKER_PORT, DBUtils.DB_ROOT_USER, DBUtils.DOCKER_DB_PASSWORD);
             if (conn != null) {
                 ptm = conn.prepareStatement(INSERT);
                 ptm.setString(1, product.getProductID());
