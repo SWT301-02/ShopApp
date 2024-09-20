@@ -1,0 +1,7 @@
+name: CD for Java Servlet App
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
