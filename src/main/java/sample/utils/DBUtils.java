@@ -30,7 +30,7 @@ public class DBUtils {
         SQLException {
         Connection conn = null;
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        String url = String.format("jdbc:sqlserver://localhost:%s;databaseName=UserManagement", dockerPort);
+        String url = String.format("jdbc:sqlserver://mssql:%s;databaseName=UserManagement", dockerPort);
         conn = DriverManager.getConnection(url, user, password);
         return conn;
     }
