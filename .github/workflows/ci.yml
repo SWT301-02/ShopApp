@@ -36,17 +36,17 @@ jobs:
           distribution: 'corretto'
           cache: maven
 
-      - name: Build with Maven
-        run: mvn -B clean install
-
       - name: Wait for SQL Server to be ready
         run: |
           echo "Waiting for SQL Server to start..."
           sleep 20
           echo "SQL Server is up and running."
 
+      - name: Build with Maven
+        run: mvn -B clean install -Ddb.user=dev -Ddb.password='Luucaohoang1604^^' -Ddb.url='jdbc:sqlserver://127.0.0.1:1435;databaseName=UserManagement'
+
       - name: Run Tests
-        run: mvn test
+        run: mvn test -Ddb.user=dev -Ddb.password='Luucaohoang1604^^' -Ddb.url='jdbc:sqlserver://127.0.0.1:1435;databaseName=UserManagement'
 
       - name: Upload Test Report
         uses: actions/upload-artifact@v4
