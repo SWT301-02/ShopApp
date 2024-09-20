@@ -17,7 +17,8 @@ class DBUtilsTest {
     @Test
     void getConnection() {
         try {
-            assertNotNull(dbUtils.getConnection(DBUtils.CI_PORT, DBUtils.DB_CI_USER, DBUtils.DOCKER_DB_PASSWORD));
+            assertNotNull(dbUtils.getConnection("1433", DBUtils.DB_ROOT_USER,
+                                                DBUtils.DOCKER_DB_PASSWORD));
         } catch (Exception e) {
             fail("Error, DB configuration false: " + e.getMessage());
         }
