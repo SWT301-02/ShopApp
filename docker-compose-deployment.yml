@@ -1,0 +1,29 @@
+services:
+  database:
+    build:
+      context: .
+      dockerfile: Dockerfile-db
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: 'Luucaohoang1604^^'
+      MSSQL_PID: Developer
+    ports:
+      - "1435:1433"
+    networks:
+      - cd_network
+    volumes:
+      - db_data:/var/opt/mssql
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile-deployment
+    depends_on:
+      - database
+    networks:
+      - cd_network
+    ports:
+      - "8080:8080"
+
+volumes:
+  db_data:
