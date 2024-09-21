@@ -13,7 +13,7 @@ jobs:
     services:
       # Set up a SQL Server Docker container
       mssql:
-        image: lcaohoanq/swt301db:1.0
+        image: lcaohoanq/swt301db:1.1
         env:
           ACCEPT_EULA: Y
           SA_PASSWORD: 'Luucaohoang1604^^'
