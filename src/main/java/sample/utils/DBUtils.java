@@ -21,7 +21,7 @@ public class DBUtils {
     public static final String DB_CI_USER = "dev";
     public static final String DB_PASSWORD = "12345";
     public static final String DOCKER_DB_PASSWORD = "Luucaohoang1604^^";
-    public static final String DOCKER_PORT = "1435";
+    public static final String DOCKER_PORT = "1434";
     public static final String CI_PORT = "1435";
 
     //Connect to docker container
@@ -29,7 +29,7 @@ public class DBUtils {
         SQLException {
         Connection conn = null;
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        String url = String.format("jdbc:sqlserver://mssql:%s;databaseName=UserManagement", dockerPort);
+        String url = String.format("jdbc:sqlserver://localhost:%s;databaseName=master", dockerPort);
         conn = DriverManager.getConnection(url, user, password);
         return conn;
     }

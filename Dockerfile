@@ -9,4 +9,4 @@ CMD (/opt/mssql/bin/sqlservr --accept-eula & ) & \
      sleep 30 && \
      /opt/mssql-tools/bin/sqlcmd -S127.0.0.1 -Usa -PLuucaohoang1604^^ -i ./dataV3.sql
 
-EXPOSE 1435
+EXPOSE 1433

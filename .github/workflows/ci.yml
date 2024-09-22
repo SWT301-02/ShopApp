@@ -13,12 +13,12 @@ jobs:
     services:
       # Set up a SQL Server Docker container
       mssql:
-        image: lcaohoanq/swt301db:1.1
+        image: mcr.microsoft.com/mssql/server:2019-latest
         env:
           ACCEPT_EULA: Y
           SA_PASSWORD: 'Luucaohoang1604^^'
         ports:
-          - 1435:1433
+          - 1434:1433
         options: >-
           --health-cmd "exit 0" 
           --health-interval 10s

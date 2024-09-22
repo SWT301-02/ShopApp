@@ -1,9 +1,9 @@
 services:
   mssql:
-    image: lcaohoanq/swt301db:1.1
+    image: lcaohoanq/swt301db:1.3
     container_name: ShopApp
     ports:
-      - "1435:1433"
+      - "1433:1433"
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=Luucaohoang1604^^

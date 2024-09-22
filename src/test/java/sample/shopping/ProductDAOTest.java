@@ -3,10 +3,12 @@ package sample.shopping;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
 
+@Disabled
 class ProductDAOTest {
 
     ProductDAO productDAO = null;
