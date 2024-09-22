@@ -33,7 +33,7 @@ public class UserRepository {
         }
     }
 
-    public void deleteUser(int userId) {
+    public void deleteUser(String userId) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         try {
@@ -104,7 +104,7 @@ public class UserRepository {
         }
     }
 
-    public UserDTO getUserById(int id) {
+    public UserDTO getUserById(String id) {
         EntityManager em = emf.createEntityManager();
         try {
             return em.find(UserDTO.class, id);

@@ -4,6 +4,7 @@ import at.favre.lib.crypto.bcrypt.BCrypt;
 import jakarta.persistence.Persistence;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,30 +30,41 @@ class UserDAOTest {
         userRepository.saveUser(user);
         // Unit test for checkLogin method
         UserDTO loginUser = userRepository.checkLogin(user.getUserID(), user.getPassword());
-//        BCrypt.Result result = BCrypt.verifyer().verify(user.getPassword().toCharArray(), loginUser.getPassword());
-//        assertTrue(result.verified, "Should return true for correct password");
         assertNotNull(loginUser, "Should return user object for correct login");
+        // Clean up: Delete the user after test
+        userRepository.deleteUser(user.getUserID());
     }
 
 //    @Disabled
-//    @Test
-//    void testCheckDuplicate() throws Exception {
-//        // Unit test for checkDuplicate method
-//        String userID = "admin";
-//        boolean result = userDAO.checkDublicate(userID);
-//        assertTrue(result, "Should return true for existing user");
-//    }
-//
-//    @Disabled
-//    @Test
-//    void testInsertAndDelete() throws Exception {
-//        // Integration test for insert and delete methods
-//        UserDTO user = new UserDTO("newUser", "New User", "US", "password123", "newuser@example.com");
-//
-//        boolean inserted = userDAO.insert(user);
-//        assertTrue(inserted, "User should be inserted successfully");
-//
-//        boolean deleted = userDAO.deleteUser("newUser");
-//        assertTrue(deleted, "User should be deleted successfully");
-//    }
+    @Test
+    void testCheckDuplicate() throws Exception {
+        // Unit test for checkDuplicate method
+        UserDTO user = new UserDTO("hoang", "hoang luu", "US", "123", "hoangclw@gmail.com");
+        userRepository.saveUser(user);
+        boolean duplicate = userRepository.checkUserIdDuplicate(user.getUserID());
+        assertTrue(duplicate, "Should return true for duplicate user ID");
+        // Clean up: Delete the user after test
+        userRepository.deleteUser(user.getUserID());
+    }
+
+    @Test
+    @Order(1)
+    void testInsertUser() throws Exception {
+        // Unit test for insert method
+        UserDTO newUser = new UserDTO("hoang", "hoang luu", "US", "123", "hoangclw@gmail.com");
+        userRepository.saveUser(newUser);
+        UserDTO insertedUser = userRepository.getUserById(newUser.getUserID());
+        assertNotNull(insertedUser, "User should be inserted successfully");
+    }
+
+    @Test
+    @Order(2)
+    void testDeleteUser() throws Exception {
+        // Unit test for delete method
+        //use the same user as in testInsertUser
+        UserDTO existingUser = userRepository.getUserById("hoang");
+        userRepository.deleteUser(existingUser.getUserID());
+        UserDTO deletedUser = userRepository.getUserById(existingUser.getUserID());
+        assertNull(deletedUser, "User should be deleted successfully");
+    }
 }
