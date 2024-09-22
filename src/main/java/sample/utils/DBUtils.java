@@ -8,10 +8,7 @@ package sample.utils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import javax.naming.Context;
-import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.sql.DataSource;
 
 /**
  *
@@ -20,17 +17,19 @@ import javax.sql.DataSource;
 public class DBUtils {
 
     public static final String DB_NAME = "UserManagement";
-    public static final String DB_USER = "sa";
+    public static final String DB_ROOT_USER = "sa";
+    public static final String DB_CI_USER = "dev";
     public static final String DB_PASSWORD = "12345";
     public static final String DOCKER_DB_PASSWORD = "Luucaohoang1604^^";
-    public static final String DOCKER_PORT = "1435";
+    public static final String DOCKER_PORT = "1434";
+    public static final String CI_PORT = "1435";
 
     //Connect to docker container
     public static final Connection getConnection(String dockerPort, String user, String password) throws ClassNotFoundException,
         SQLException {
         Connection conn = null;
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        String url = String.format("jdbc:sqlserver://localhost:%s;databaseName=UserManagement", dockerPort);
+        String url = String.format("jdbc:sqlserver://localhost:%s;databaseName=master", dockerPort);
         conn = DriverManager.getConnection(url, user, password);
         return conn;
     }
@@ -40,7 +39,7 @@ public class DBUtils {
         Connection conn = null;
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         String url = "jdbc:sqlserver://localhost:1433;databaseName=" + DB_NAME;
-        conn = DriverManager.getConnection(url, DB_USER, DB_PASSWORD);
+        conn = DriverManager.getConnection(url, DB_ROOT_USER, DB_PASSWORD);
         return conn;
     }
 

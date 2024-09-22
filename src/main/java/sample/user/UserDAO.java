@@ -72,7 +72,7 @@ public class UserDAO {
         PreparedStatement ptm = null;
         ResultSet rs = null;
         try {
-            conn = DBUtils.getConnection(DBUtils.DOCKER_PORT, DBUtils.DB_USER, DBUtils.DOCKER_DB_PASSWORD);
+            conn = DBUtils.getConnection(DBUtils.DOCKER_PORT, DBUtils.DB_ROOT_USER, DBUtils.DOCKER_DB_PASSWORD);
             if (conn != null) {
                 ptm = conn.prepareStatement(LOGIN_V2);
                 ptm.setString(1, userID);
@@ -277,7 +277,7 @@ public class UserDAO {
         Connection conn = null;
         PreparedStatement ptm = null;
         try {
-            conn = DBUtils.getConnection(DBUtils.DOCKER_PORT, DBUtils.DB_USER, DBUtils.DOCKER_DB_PASSWORD);
+            conn = DBUtils.getConnection(DBUtils.DOCKER_PORT, DBUtils.DB_ROOT_USER, DBUtils.DOCKER_DB_PASSWORD);
             if (conn != null) {
                 ptm = conn.prepareStatement(INSERT);
                 ptm.setString(1, user.getUserID());

@@ -13,12 +13,12 @@ jobs:
     services:
       # Set up a SQL Server Docker container
       mssql:
-        image: lcaohoanq/swt301db:1.0
+        image: mcr.microsoft.com/mssql/server:2019-latest
         env:
           ACCEPT_EULA: Y
           SA_PASSWORD: 'Luucaohoang1604^^'
         ports:
-          - 1435:1433
+          - 1434:1433
         options: >-
           --health-cmd "exit 0" 
           --health-interval 10s
@@ -36,14 +36,14 @@ jobs:
           distribution: 'corretto'
           cache: maven
 
-      - name: Build with Maven
-        run: mvn -B clean install
-
       - name: Wait for SQL Server to be ready
         run: |
           echo "Waiting for SQL Server to start..."
           sleep 20
           echo "SQL Server is up and running."
+
+      - name: Build with Maven
+        run: mvn -B clean install
 
       - name: Run Tests
         run: mvn test
