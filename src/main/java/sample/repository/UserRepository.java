@@ -8,21 +8,32 @@ import jakarta.persistence.EntityTransaction;
 import lombok.AllArgsConstructor;
 
 import java.util.List;
+
 import sample.user.UserDTO;
 
 @AllArgsConstructor
 public class UserRepository {
 
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory(
-        "JPAs");
+            "JPAs");
 
     public void saveUser(UserDTO user) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         try {
-            transaction.begin();
-            em.persist(user);
-            transaction.commit();
+            if (user.toString().contains("null")) {
+                transaction.rollback();
+                throw new IllegalArgumentException("User data not valid");
+            } else {
+                if (checkUserIdDuplicate(user.getUserID())) {
+                    transaction.rollback();
+                    throw new IllegalArgumentException("User already exists");
+                } else {
+                    transaction.begin();
+                    em.persist(user);
+                    transaction.commit();
+                }
+            }
         } catch (Exception e) {
             if (transaction.isActive()) {
                 transaction.rollback();
@@ -33,7 +44,7 @@ public class UserRepository {
         }
     }
 
-    public void deleteUser(String userId) {
+    public boolean deleteUser(String userId) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         try {
@@ -43,9 +54,12 @@ public class UserRepository {
             UserDTO user = em.find(UserDTO.class, userId);
             if (user != null) {
                 em.remove(user);
+                transaction.commit();
+                return true;
+            } else {
+                transaction.rollback();
+                return false;
             }
-
-            transaction.commit();
         } catch (Exception e) {
             if (transaction.isActive()) {
                 transaction.rollback();
@@ -56,14 +70,21 @@ public class UserRepository {
         }
     }
 
-
     public void updateUser(UserDTO user) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         try {
-            transaction.begin();
-            em.merge(user);
-            transaction.commit();
+            if (user.toString().contains("null")) {
+                transaction.rollback();
+                throw new IllegalArgumentException("User data not valid");
+            } else if (getUserById(user.getUserID()) == null) {
+                transaction.rollback();
+                throw new IllegalArgumentException("User does not exist");
+            } else {
+                transaction.begin();
+                em.merge(user);
+                transaction.commit();
+            }
         } catch (Exception e) {
             if (transaction.isActive()) {
                 transaction.rollback();
@@ -78,8 +99,8 @@ public class UserRepository {
         EntityManager em = emf.createEntityManager();
         try {
             return em.createQuery(
-                    "SELECT COUNT(u) FROM UserDTO u", Long.class)
-                .getSingleResult().intValue();
+                            "SELECT COUNT(u) FROM UserDTO u", Long.class)
+                    .getSingleResult().intValue();
         } finally {
             em.close();
         }
@@ -91,12 +112,12 @@ public class UserRepository {
         EntityManager em = emf.createEntityManager();
         try {
             return em.createQuery(
-                    "SELECT u FROM UserDTO u WHERE (u.userID = :userID) AND u.password = "
-                        + ":password",
-                    UserDTO.class)
-                .setParameter("userID", userID)
-                .setParameter("password", password)
-                .getSingleResult();
+                            "SELECT u FROM UserDTO u WHERE (u.userID = :userID) AND u.password = "
+                                    + ":password",
+                            UserDTO.class)
+                    .setParameter("userID", userID)
+                    .setParameter("password", password)
+                    .getSingleResult();
         } catch (NoResultException e) {
             return null;
         } finally {
@@ -117,10 +138,10 @@ public class UserRepository {
         EntityManager em = emf.createEntityManager();
         try {
             return em.createQuery(
-                    "SELECT u FROM UserDTO u WHERE u.fullName = :username",
-                    UserDTO.class)
-                .setParameter("username", username)
-                .getSingleResult();
+                            "SELECT u FROM UserDTO u WHERE u.fullName = :username",
+                            UserDTO.class)
+                    .setParameter("username", username)
+                    .getSingleResult();
         } finally {
             em.close();
         }
@@ -130,9 +151,9 @@ public class UserRepository {
         EntityManager em = emf.createEntityManager();
         try {
             return em.createQuery(
-                    "SELECT u FROM UserDTO u WHERE u.email = :email", UserDTO.class)
-                .setParameter("email", email)
-                .getSingleResult();
+                            "SELECT u FROM UserDTO u WHERE u.email = :email", UserDTO.class)
+                    .setParameter("email", email)
+                    .getSingleResult();
         } finally {
             em.close();
         }
@@ -142,10 +163,10 @@ public class UserRepository {
         EntityManager em = emf.createEntityManager();
         try {
             return em.createQuery(
-                    "SELECT COUNT(u) FROM UserDTO u WHERE u.userID = :userID",
-                    Long.class)
-                .setParameter("userID", userID)
-                .getSingleResult() > 0;
+                            "SELECT COUNT(u) FROM UserDTO u WHERE u.userID = :userID",
+                            Long.class)
+                    .setParameter("userID", userID)
+                    .getSingleResult() > 0;
         } finally {
             em.close();
         }
@@ -173,43 +194,39 @@ public class UserRepository {
         EntityManager em = emf.createEntityManager();
         try {
             return em.createQuery(
-                    "SELECT u FROM UserDTO u ORDER BY u.roleID ASC", UserDTO.class)
-                .getResultList();
+                            "SELECT u FROM UserDTO u ORDER BY u.roleID ASC", UserDTO.class)
+                    .getResultList();
         } finally {
             em.close();
         }
     }
 
-    public static void main(String[] args) {
-//        EntityManagerFactory emf = MyEntityManager.getEntityManagerFactory();
+    public List<UserDTO> getAllUsers() {
+        EntityManager em = emf.createEntityManager();
         try {
-            UserRepository userRepository = new UserRepository(
-                Persistence.createEntityManagerFactory(
-                    "JPAs"));
-
-            if (userRepository == null) {
-                throw new Exception("UserRepository is null");
-            } else {
-
-//        UserDTO user = new UserDTO();
-                UserDTO user = new UserDTO("hoang", "luu", "tester@gmail.com", "123");
-        userRepository.saveUser(user);
-//        userRepository.saveUser(user);
-//        userRepository.deleteUser(user);
-//        userRepository.updateUser(user);
-//        userRepository.getTotalUsers();
-                System.out.println(userRepository.checkLogin("hoang", "123"));
-//        userRepository.getUserById(1);
-//                System.out.println(userRepository.getUserByUsername("admin"));
-                for (UserDTO u : userRepository.getData()) {
-                    System.out.println(u);
-                }
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+            return em.createQuery(
+                            "SELECT u FROM UserDTO u ORDER BY u.userID ASC", UserDTO.class)
+                    .getResultList();
+        } finally {
+            em.close();
         }
+    }
 
-
+    public void executeUpdate(String query) {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        try {
+            transaction.begin();
+            em.createQuery(query).executeUpdate();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            throw e;
+        } finally {
+            em.close();
+        }
     }
 
 }

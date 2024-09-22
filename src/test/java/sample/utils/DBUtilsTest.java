@@ -14,7 +14,7 @@ class DBUtilsTest {
     public void setup() throws Exception {
         dbUtils = new DBUtils();
     }
-    @Disabled
+
     @Test
     void getConnection() {
         try {

@@ -14,6 +14,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 /**
  *
  * @author lmao
@@ -29,14 +32,17 @@ public class ProductDTO {
 
     @Id
     private String productID;
+    @NotNull
     private String productName;
+    @Min(0)
     private float price;
+    @Min(0)
     private int quantity;
     private String imageUrl;
 
-    public ProductDTO(String productID, String name, float price, int quantity) {
+    public ProductDTO(String productID, String productName, float price, int quantity) {
         this.productID = productID;
-        this.productName = name;
+        this.productName = productName;
         this.price = price;
         this.quantity = quantity;
     }

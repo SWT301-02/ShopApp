@@ -6,6 +6,7 @@
 package sample.shopping;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -99,4 +100,13 @@ public class CartDTO {
         }
         return sum;
     }
+
+//    public OrderDTO createOrder(int orderID, String userID) {
+//        double total = getTotalPrice();
+//        List<OrderDetailDTO> orderDetails = cart.values().stream()
+//                .map(product -> new OrderDetailDTO(orderID, product.getProductID(), product.getPrice(),
+//                        product.getQuantity()))
+//                .toList();
+//        return new OrderDTO(orderID, userID, total, orderDetails);
+//    }
 }
