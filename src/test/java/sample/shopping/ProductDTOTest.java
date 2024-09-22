@@ -31,7 +31,7 @@ class ProductDTOTest {
         ProductDTO product = new ProductDTO();
         product.setProductID("P003");
         product.setProductName("Test Product 3");
-        product.setPrice(150.0F);
+        product.setPrice(150.0F  );
         product.setQuantity(10);
         product.setImageUrl("http://example.com/image3.jpg");
 
