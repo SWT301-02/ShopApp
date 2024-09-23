@@ -103,7 +103,7 @@ public class CheckoutController extends HttpServlet {
                                 }
                                 break;
                             case "vnPay":
-                                    request.setAttribute("ERROR", "This Payment method not yet supported!");
+                                request.setAttribute("ERROR", "This Payment method not yet supported!");
                                 break;
                             default:
                                 request.setAttribute("ERROR", "Invalid Payment option!");

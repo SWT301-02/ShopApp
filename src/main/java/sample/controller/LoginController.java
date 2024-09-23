@@ -58,19 +58,19 @@ public class LoginController extends HttpServlet {
                 UserDTO loginUser = dao.checkLoginv2(userID);
                 BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), loginUser.getPassword());
                 if (result.verified) {
-                        switch (loginUser.getRoleID()) {
-                            case AD:
-                                url = AD_PAGE;
-                                break;
-                            case US:
-                                url = US_PAGE;
-                                break;
-                            default:
-                                request.setAttribute("ERROR", "Your role is not support yet!");
-                                break;
-                        }
-                        loginUser.setPassword("***");
-                        session.setAttribute("LOGIN_USER", loginUser);  
+                    switch (loginUser.getRoleID()) {
+                        case AD:
+                            url = AD_PAGE;
+                            break;
+                        case US:
+                            url = US_PAGE;
+                            break;
+                        default:
+                            request.setAttribute("ERROR", "Your role is not support yet!");
+                            break;
+                    }
+                    loginUser.setPassword("***");
+                    session.setAttribute("LOGIN_USER", loginUser);
                 } else {
                     request.setAttribute("ERROR", "userID or password incorrect!");
                     url = ERROR;

@@ -42,7 +42,7 @@ public class DeleteController extends HttpServlet {
             HttpSession session = request.getSession();
             UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
             String userID = request.getParameter("userID");
-            
+
             if (!loginUser.getUserID().equals(userID)) {
                 UserDAO dao = new UserDAO();
                 boolean check = dao.deleteUser(userID);
@@ -55,7 +55,7 @@ public class DeleteController extends HttpServlet {
             } else {
                 request.setAttribute("ERROR", "Logining User!");
             }
-            
+
         } catch (Exception e) {
             log("Error at DeleteController: " + e.getMessage());
         } finally {

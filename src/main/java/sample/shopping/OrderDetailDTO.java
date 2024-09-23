@@ -15,7 +15,6 @@ public class OrderDetailDTO {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private int orderID;
     private String productID;
     private double price;
     private int quantity;

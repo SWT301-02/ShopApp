@@ -4,17 +4,19 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import sample.model.Order;
 import sample.shopping.OrderDTO;
-import sample.shopping.OrderDetailDTO;
-import sample.utils.DBUtils;
 
 import java.util.List;
 
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class OrderRepository {
-
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPAs");
 
-    public int saveOrder(OrderDTO order) {
+    public int saveOrder(Order order) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         try {

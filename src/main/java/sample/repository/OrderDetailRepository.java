@@ -4,11 +4,12 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
+import lombok.AllArgsConstructor;
 import sample.shopping.OrderDetailDTO;
 
 import java.util.List;
 
-
+@AllArgsConstructor
 public class OrderDetailRepository {
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPAs");
 
@@ -76,9 +77,19 @@ public class OrderDetailRepository {
     public List<OrderDetailDTO> getOrderDetailsByOrderID(int orderID) {
         EntityManager em = emf.createEntityManager();
         try {
-            return em.createQuery("SELECT od FROM OrderDetailDTO od WHERE od.orderID = :orderID", OrderDetailDTO.class)
+            return em.createQuery("SELECT od FROM OrderDetailDTO od WHERE od.order.orderID = :orderID", OrderDetailDTO.class)
                     .setParameter("orderID", orderID)
                     .getResultList(); // Retrieve the order details by order ID
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<OrderDetailDTO> getAllOrderDetails() {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createQuery("SELECT od FROM OrderDetailDTO od", OrderDetailDTO.class)
+                    .getResultList(); // Retrieve all order details
         } finally {
             em.close();
         }

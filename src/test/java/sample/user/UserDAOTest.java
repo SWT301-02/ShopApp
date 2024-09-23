@@ -27,6 +27,7 @@ class UserDAOTest {
     }
 
     @Test
+    @Order(1)
     void testCheckLogin() throws Exception {
         UserDTO user = new UserDTO("hoang", "hoang luu", "US", "123", "hoangclw@gmail.com");
         userRepository.saveUser(user);
@@ -38,6 +39,7 @@ class UserDAOTest {
     }
 
     @Test
+    @Order(2)
     void testCheckDuplicate() throws Exception {
         // Unit test for checkDuplicate method
         UserDTO user = new UserDTO("hoang", "hoang luu", "US", "123", "hoangclw@gmail.com");
@@ -49,7 +51,7 @@ class UserDAOTest {
     }
 
     @Test
-    @Order(1)
+    @Order(3)
     void testInsertUser() throws Exception {
         // Unit test for insert method
         UserDTO newUser = new UserDTO("hoang", "hoang luu", "US", "123", "hoangclw@gmail.com");
@@ -59,7 +61,7 @@ class UserDAOTest {
     }
 
     @Test
-    @Order(2)
+    @Order(4)
     void testDeleteUser() throws Exception {
         UserDTO newUser = new UserDTO("hoang", "hoang luu", "US", "123", "hoangclw@gmail.com");
         userRepository.saveUser(newUser);
@@ -70,7 +72,7 @@ class UserDAOTest {
     }
 
     @Test
-    @Order(3)
+    @Order(5)
     void testGetUserById() throws Exception {
         UserDTO user = new UserDTO("john", "John Doe", "US", "1234", "john@example.com");
         userRepository.saveUser(user);
@@ -81,7 +83,7 @@ class UserDAOTest {
     }
 
     @Test
-    @Order(4)
+    @Order(6)
     void testUpdateUser() throws Exception {
         UserDTO userToUpdate = new UserDTO("jane", "Jane Doe", "US", "5678", "jane@example.com");
         userRepository.saveUser(userToUpdate);
@@ -99,14 +101,14 @@ class UserDAOTest {
     }
 
     @Test
-    @Order(5)
+    @Order(7)
     void testDeleteNonExistentUser() throws Exception {
         boolean isDeleted = userRepository.deleteUser("nonexistent");
         assertFalse(isDeleted, "Error, testDeleteNonExistentUser failed: Should not delete a non-existent user");
     }
 
     @Test
-    @Order(6)
+    @Order(8)
     void testCheckDuplicateUserId() throws Exception {
         UserDTO user = new UserDTO("duplicateUser", "Duplicate User", "US", "1234", "duplicate@example.com");
         userRepository.saveUser(user);
@@ -119,7 +121,7 @@ class UserDAOTest {
     }
 
     @Test
-    @Order(7)
+    @Order(9)
     void testInsertDuplicateUser() throws Exception {
         UserDTO user = new UserDTO("duplicateUser", "Duplicate User", "US", "1234", "duplicate@example.com");
         userRepository.saveUser(user);
@@ -137,7 +139,7 @@ class UserDAOTest {
     }
 
     @Test
-    @Order(8)
+    @Order(10)
     void testGetAllUsersEmpty() throws Exception {
         // Clear all users for this test
         userRepository.executeUpdate("DELETE FROM UserDTO");
@@ -146,7 +148,7 @@ class UserDAOTest {
     }
 
     @Test
-    @Order(9)
+    @Order(11)
     void testUpdateNonExistentUser() throws Exception {
         UserDTO nonExistentUser = new UserDTO("nonexistent", "Non-Existent User", "US", "0000",
                 "nonexistent@example.com");
@@ -158,7 +160,7 @@ class UserDAOTest {
     }
 
     @Test
-    @Order(10)
+    @Order(12)
     void testInsertUserWithNullValues() throws Exception {
         UserDTO userWithNulls = new UserDTO(null, null, null, null, null);
         Exception exception = assertThrows(Exception.class, () -> {
