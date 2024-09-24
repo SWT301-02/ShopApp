@@ -46,7 +46,7 @@ jobs:
         env:
           MAVEN_OPTS: "-Dorg.slf4j.simpleLogger.log.org.hibernate=error"
         run: mvn -B clean test
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Generate Surefire Report
         if: always()
