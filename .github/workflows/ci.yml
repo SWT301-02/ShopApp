@@ -55,8 +55,10 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install Pandas
-        run: pip install pandas
+      - name: Install Pandas and Openpyxl
+        run: |
+          pip install pandas
+          pip install openpyxl
 
       - name: Convert XML to Excel
         run: python convert_xml_to_excel.py
