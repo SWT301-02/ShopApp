@@ -42,8 +42,9 @@ jobs:
           sleep 20
           echo "SQL Server is up and running."
 
-      - name: Build with Maven
-        run: mvn -B clean install
+      - name: Build and Test with Maven
+        run: mvn -B clean install surefire-report:report
+        continue-on-error: true
 
       - name: Run Tests
         run: mvn test
