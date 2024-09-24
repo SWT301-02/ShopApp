@@ -50,20 +50,20 @@ jobs:
         if: always()
         run: mvn surefire-report:report-only
 
-      - name: Generate Surefire Excel Report
-        if: always()
-        run: mvn surefire-report-excel:excel
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Pandas
+        run: pip install pandas
+
+      - name: Convert XML to Excel
+        run: python convert_xml_to_excel.py
 
       - name: Upload Test Report
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: test-report
-          path: target/site/surefire-report.html
-
-      - name: Upload Excel Test Report
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: test-report-excel
-          path: target/surefire-reports/*.xlsx
+          path: target/surefire-reports/test-report.xlsx
