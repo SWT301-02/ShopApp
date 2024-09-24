@@ -63,9 +63,11 @@ jobs:
       - name: Convert XML to Excel
         run: python convert_xml_to_excel.py
 
-      - name: Upload Test Report
+      - name: Upload Test Reports
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: test-report
-          path: target/surefire-reports/test-report.xlsx
+          name: test-reports
+          path: |
+            target/surefire-reports/test-report.xlsx
+            target/surefire-reports/*.xml
