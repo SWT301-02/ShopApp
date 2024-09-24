@@ -24,7 +24,7 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 3
-
+        # Set up a wait time for the container to be ready
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -43,7 +43,12 @@ jobs:
           echo "SQL Server is up and running."
 
       - name: Build and Test with Maven
-        run: mvn -B clean test site
+        run: mvn -B clean test
+        continue-on-error: false
+
+      - name: Generate Surefire Report
+        if: always()
+        run: mvn surefire-report:report-only
 
       - name: Set up Python
         uses: actions/setup-python@v4
