@@ -12,7 +12,7 @@ import sample.shopping.OrderDTO;
 import java.util.List;
 
 @RequiredArgsConstructor
-@AllArgsConstructor
+ @AllArgsConstructor
 public class OrderRepository {
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPAs");
 

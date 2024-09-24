@@ -110,6 +110,7 @@ for col in summary_ws.columns:
     summary_ws.column_dimensions[column].width = adjusted_width
 
 # Create charts for each class
+chart_row = 2
 for idx, row in enumerate(summary_ws.iter_rows(min_row=2, values_only=True), start=2):
     chart = BarChart()
     chart.type = "col"
@@ -123,10 +124,13 @@ for idx, row in enumerate(summary_ws.iter_rows(min_row=2, values_only=True), sta
     chart.add_data(data, titles_from_data=False)
     chart.set_categories(cats)
 
-    chart_cell = get_column_letter(6) + str(idx)
+    chart_cell = f"F{chart_row}"
     summary_ws.add_chart(chart, chart_cell)
+    
+    # Move to the next position for the next chart
+    chart_row += 15  # Adjust this value to increase/decrease space between charts
 
 # Save the workbook
 wb.save(excel_path)
 
-print(f"Excel report with enhanced formatting and charts generated: {excel_path}")
+print(f"Excel report with enhanced formatting and separate charts generated: {excel_path}")
