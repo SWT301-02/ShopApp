@@ -47,14 +47,10 @@ jobs:
           docker build -f Dockerfile-deployment -t ${{ secrets.DOCKER_USERNAME }}/swt301cd:${{ env.version }} .
           
           # Tag the image with 'latest'
-          docker tag ${{ secrets.DOCKER_USERNAME }}/swt301cd:${{ env.version }} ${{ secrets.DOCKER_USERNAME }}/swt301cd:latest
+          # docker tag ${{ secrets.DOCKER_USERNAME }}/swt301cd:${{ env.version }} ${{ secrets.DOCKER_USERNAME }}/swt301cd:latest
           
           # Push the versioned image and 'latest' tag to DockerHub
           docker push ${{ secrets.DOCKER_USERNAME }}/swt301cd:${{ env.version }}
-
-      - name: Deploy with Docker Compose
-        run: |
-          docker compose -f docker-compose-deployment.yml up -d
 
       - name: Update VERSION File
         run: |

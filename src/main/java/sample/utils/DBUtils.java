@@ -17,7 +17,7 @@ import javax.naming.NamingException;
 public class DBUtils {
 
     public static final String DB_NAME = "UserManagement";
-    public static final String DB_ROOT_USER = "sa";
+    public static final String DB_ROOT_USER = "SA";
     public static final String DB_CI_USER = "dev";
     public static final String DB_PASSWORD = "12345";
     public static final String DOCKER_DB_PASSWORD = "Luucaohoang1604^^";

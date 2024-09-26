@@ -30,7 +30,7 @@ CREATE TABLE [dbo].[tblProducts]
 
 CREATE TABLE [dbo].[tblOrders]
 (
-    [orderID] INT NOT NULL,
+    [orderID] INT NOT NULL IDENTITY(1,1),
     [userID] NVARCHAR (50) NULL,
     [total] FLOAT (53) NOT NULL,
     [date] DATE NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE [dbo].[tblOrders]
 
 CREATE TABLE [dbo].[tblOrderDetail]
 (
-    [orderID] INT NOT NULL,
+    [orderID] INT NOT NULL IDENTITY(1,1),
     [productID] NVARCHAR (50) NOT NULL,
     [price] FLOAT (53) NOT NULL,
     [quantity] INT NOT NULL,

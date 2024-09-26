@@ -5,7 +5,6 @@
  */
 package sample.user;
 
-import at.favre.lib.crypto.bcrypt.BCrypt;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -43,7 +42,7 @@ public class UserDTO {
     }
 
     public void setPassword(String password) {
-        this.password = BCrypt.withDefaults().hashToString(12, password.toCharArray());
+        this.password = password;
     }
 
 }
