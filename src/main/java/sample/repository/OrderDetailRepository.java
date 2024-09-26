@@ -5,10 +5,12 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import sample.shopping.OrderDetailDTO;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @AllArgsConstructor
 public class OrderDetailRepository {
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPAs");

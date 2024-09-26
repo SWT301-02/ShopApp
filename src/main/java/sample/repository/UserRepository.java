@@ -9,8 +9,10 @@ import lombok.AllArgsConstructor;
 
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
 import sample.user.UserDTO;
 
+@RequiredArgsConstructor
 @AllArgsConstructor
 public class UserRepository {
 
