@@ -52,10 +52,6 @@ jobs:
           # Push the versioned image and 'latest' tag to DockerHub
           docker push ${{ secrets.DOCKER_USERNAME }}/swt301cd:${{ env.version }}
 
-      - name: Deploy with Docker Compose
-        run: |
-          docker compose -f docker-compose-deployment.yml up -d
-
       - name: Update VERSION File
         run: |
           # Update the VERSION file with the new version
